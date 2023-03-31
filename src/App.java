@@ -1,4 +1,6 @@
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -11,7 +13,8 @@ public class App {
         // fazer uma conexão HTTP e buscar os top 10 filmes ou séries;
         // System.getenv() para pegar variaveis de ambiente
         String urlF = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-        //String urlS = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json";
+        // String urlS =
+        // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json";
         URI endereco = URI.create(urlF);
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(endereco).GET().build();
@@ -32,9 +35,18 @@ public class App {
 
         for (int i = 0; i < listaDeFilmes.size(); i++) {
             Map<String, String> filme = listaDeFilmes.get(i);
-            System.out.println("\u001b[1mTítulo: \u001b[m" + filme.get("title"));
-            System.out.println("\u001b[3mURL da imagem: \u001b[m" + filme.get("image"));
-            System.out.println(filme.get("imDbRating"));
+            
+            String urlImagem = filme.get("image");
+            String titulo = filme.get("title");
+
+            InputStream inputStream = new URL(urlImagem).openStream();
+            String nameFile = titulo+".png";
+            
+            var figurinhas = new Figure();
+            figurinhas.create(inputStream, nameFile);
+        
+            /*System.out.println("\u001b[3mURL da imagem: \u001b[m" + filme.get("image"));
+            System.out.println(filme.get("imDbRating"));*/
             double classificacao = Double.parseDouble(filme.get("imDbRating"));
             int numEstrela = (int) classificacao;
             for (int n = 1; n <= numEstrela; n++) {
