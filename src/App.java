@@ -11,8 +11,8 @@ public class App {
         // fazer uma conexão HTTP e buscar os top 10 filmes ou séries;
         // System.getenv() para pegar variaveis de ambiente
         String urlF = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-        String urlS = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json";
-        URI endereco = URI.create(urlS);
+        //String urlS = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json";
+        URI endereco = URI.create(urlF);
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(endereco).GET().build();
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
