@@ -7,7 +7,7 @@ public class Figure {
 
     public void create() throws Exception {
         // leitura da imagem
-        BufferedImage originalImage = ImageIO.read(new File("entrada/filme.jpg", null));
+        BufferedImage originalImage = ImageIO.read(new File("entrada/filme.jpg"));
 
         // criar nova imagem em memória com transparência e com tamanho novo
         int largura = originalImage.getWidth();
