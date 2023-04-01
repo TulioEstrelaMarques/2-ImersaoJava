@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
@@ -32,21 +33,24 @@ public class App {
          * System.out.println(filme.get("imDbRating"));
          * System.out.println();}
          */
-
+        var diretorio = new File("figure/");
+        diretorio.mkdir();
         for (int i = 0; i < listaDeFilmes.size(); i++) {
             Map<String, String> filme = listaDeFilmes.get(i);
-            
+
             String urlImagem = filme.get("image");
             String titulo = filme.get("title");
 
             InputStream inputStream = new URL(urlImagem).openStream();
-            String nameFile = titulo+".png";
-            
+            String nameFile = "figure/" + titulo + ".png";
+
             var figurinhas = new Figure();
             figurinhas.create(inputStream, nameFile);
-        
-            /*System.out.println("\u001b[3mURL da imagem: \u001b[m" + filme.get("image"));
-            System.out.println(filme.get("imDbRating"));*/
+
+            /*
+             * System.out.println("\u001b[3mURL da imagem: \u001b[m" + filme.get("image"));
+             * System.out.println(filme.get("imDbRating"));
+             */
             double classificacao = Double.parseDouble(filme.get("imDbRating"));
             int numEstrela = (int) classificacao;
             for (int n = 1; n <= numEstrela; n++) {
