@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
@@ -13,10 +14,19 @@ public class App {
     public static void main(String[] args) throws Exception {
         // fazer uma conexão HTTP e buscar os top 10 filmes ou séries;
         // System.getenv() para pegar variaveis de ambiente
-        String urlF = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-        // String urlS =
-        // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json";
-        URI endereco = URI.create(urlF);
+
+        // String url =
+        // ="https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+
+        // String url =
+        // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies.json";
+
+        // String url =
+        // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularTVs.json";
+
+        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json";
+
+        URI endereco = URI.create(url);
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(endereco).GET().build();
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
@@ -40,18 +50,27 @@ public class App {
 
             String urlImagem = filme.get("image");
             String titulo = filme.get("title");
-
+            double classificacao = Double.parseDouble(filme.get("imDbRating"));
+            String textoFigure;
+            InputStream avalia;
+            if (classificacao >= 8.0) {
+                textoFigure = "TOPZERA!!!";
+                avalia = new FileInputStream(new File("sobrepor/like.png"));
+            } else {
+                textoFigure = "HMMMMM...";
+                avalia = new FileInputStream(new File("sobrepor/hmmm.png"));
+            }
             InputStream inputStream = new URL(urlImagem).openStream();
             String nameFile = "figure/" + titulo + ".png";
 
             var figurinhas = new Figure();
-            figurinhas.create(inputStream, nameFile);
+            figurinhas.create(inputStream, nameFile, textoFigure, avalia);
 
             /*
              * System.out.println("\u001b[3mURL da imagem: \u001b[m" + filme.get("image"));
              * System.out.println(filme.get("imDbRating"));
              */
-            double classificacao = Double.parseDouble(filme.get("imDbRating"));
+
             int numEstrela = (int) classificacao;
             for (int n = 1; n <= numEstrela; n++) {
                 System.out.print("⭐");
