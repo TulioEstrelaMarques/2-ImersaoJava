@@ -10,15 +10,18 @@ public class App {
         // System.getenv() para pegar variaveis de ambiente
 
         String url =
+
                 // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
 
-                // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies.json";
+               // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies.json";
 
-                // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularTVs.json";
+        // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularTVs.json";
 
-                // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json";
+         "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json";
 
-                "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/NASA-APOD-JamesWebbSpaceTelescope.json";
+        // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/NASA-APOD-JamesWebbSpaceTelescope.json";
+
+        // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/NASA-APOD.json";
 
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
@@ -52,8 +55,8 @@ public class App {
                 textoFigure = "HMMMMM...";
                 avalia = new FileInputStream(new File("sobrepor/hmmm.png"));
             }
-            InputStream inputStream = new URL(conteudo.getUrlImagem()).openStream();
-            String nameFile = "figure/" + conteudo.getTitulo() + ".png";
+            InputStream inputStream = new URL(conteudo.urlImagem()).openStream();
+            String nameFile = "figure/" + conteudo.titulo() + ".png";
 
             var figurinhas = new Figure();
             figurinhas.create(inputStream, nameFile, textoFigure, avalia);
@@ -62,7 +65,7 @@ public class App {
              * System.out.println("\u001b[3mURL da imagem: \u001b[m" + filme.get("image"));
              * System.out.println(filme.get("imDbRating"));
              */
-
+            System.out.println(conteudo.titulo());
             int numEstrela = (int) classificacao;
             for (int n = 1; n <= numEstrela; n++) {
                 System.out.print("⭐");
