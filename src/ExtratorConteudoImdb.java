@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ExtratorConteudoImdb {
+public class ExtratorConteudoImdb implements ExtratorConteudo {
     public List<Conteudo> extraiConteudo(String json) {
         // extrair só os dados que interessam (titulo, poster, classificação)
         var parser = new JsonParser();

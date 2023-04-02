@@ -22,8 +22,10 @@ public class App {
 
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
-        
-        ExtratorConteudoNasa extrator = new ExtratorConteudoNasa();
+
+        ExtratorConteudo extrator = new ExtratorConteudoNasa();
+        // ExtratorConteudo extrator = new ExtratorConteudoImdb();
+
         List<Conteudo> conteudos = extrator.extraiConteudo(json);
 
         // exibir e manipular os dados para imagem...
