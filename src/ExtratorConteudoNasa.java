@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Map;
 
-public class ExtratorConteudoNasa implements ExtratorDeConteudo {
+public class ExtratorConteudoNasa implements ExtratorConteudo {
 
     public List<Conteudo> extraiConteudos(String json) {
 

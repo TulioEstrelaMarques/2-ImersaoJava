@@ -6,18 +6,18 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        API api = API.IMDB_TOP_SERIES;
+        API api = API.IMDB_TOP_MOVIES;
 
         String url = api.getUrl();
-        ExtratorDeConteudo extrator = api.getExtrator();
+        ExtratorConteudo extrator = api.getExtrator();
 
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
 
-        // exibir e manipular os dados 
+        // exibir e manipular os dados
         List<Conteudo> conteudos = extrator.extraiConteudos(json);
 
-        var geradora = new GeradoraDeFigurinhas();
+        var geradora = new Figure();
 
         for (int i = 0; i < 3; i++) {
 

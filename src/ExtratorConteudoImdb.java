@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Map;
 
-public class ExtratorConteudoIMDB implements ExtratorDeConteudo {
+public class ExtratorConteudoIMDB implements ExtratorConteudo {
     
     public List<Conteudo> extraiConteudos(String json) {
          // extrair só os dados que interessam (titulo, poster, classificação)
