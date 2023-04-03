@@ -6,9 +6,8 @@ public class ExtratorConteudoImdb implements ExtratorConteudo {
         // extrair só os dados que interessam (titulo, poster, classificação)
         var parser = new JsonParser();
         List<Map<String, String>> listaDeAtributos = parser.parse(json);
-
+        
         return listaDeAtributos.stream()
-                .map(atributos -> new Conteudo(atributos.get("title"), atributos.get("image"))).toList();
-
+        .map(atributos -> new Conteudo(atributos.get("title"), atributos.get("image"))).toList();
     }
 }
