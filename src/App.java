@@ -14,11 +14,11 @@ public class App {
 
                 // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies.json";
 
-                // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularTVs.json";
+                 "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularTVs.json";
 
                 // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json";
 
-                "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/NASA-APOD-JamesWebbSpaceTelescope.json";
+                //"https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/NASA-APOD-JamesWebbSpaceTelescope.json";
 
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
