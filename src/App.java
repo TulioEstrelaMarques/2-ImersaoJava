@@ -35,7 +35,17 @@ public class App {
         var parser = new JsonParser();
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
 
+<<<<<<< HEAD
         // exibir e manipular os dados para filmes...
+=======
+        var http = new ClienteHttp();
+        String json = http.buscaDados(url);
+        
+        ExtratorConteudoNasa extrator = new ExtratorConteudoNasa();
+        List<Conteudo> conteudos = extrator.extraiConteudo(json);
+
+        // exibir e manipular os dados para imagem...
+>>>>>>> parent of cfdfb67 (aula 3.2)
         /*
          * for (Map<String, String> filme : listaDeFilmes) {
          * System.out.println(filme.get("title"));
